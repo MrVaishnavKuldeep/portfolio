@@ -1,7 +1,7 @@
 [
   {
     "company": "Infoedge (Naukri.com)",
-    "role": "Senior Java Backend Developer",
+    "role": "Tech Lead",
     "period": "2020 - Present",
     "description": "Leading backend development for India's largest job portal, focusing on scalable microservices architecture. Worked on critical modules including recruiter search, profile management, and payment systems handling millions of daily requests.",
     "achievements": [
@@ -13,7 +13,7 @@
   },
   {
     "company": "Skilrock Technologies",
-    "role": "Backend Developer",
+    "role": "Senior Software Engineer",
     "period": "2018 - 2020",
     "description": "Developed backend systems for subscription management and licensing servers. Built RESTful APIs, implemented payment gateways, and designed database schemas for scalable applications.",
     "achievements": [
