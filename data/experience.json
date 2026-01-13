@@ -1,0 +1,26 @@
+[
+  {
+    "company": "Infoedge (Naukri.com)",
+    "role": "Senior Java Backend Developer",
+    "period": "2020 - Present",
+    "description": "Leading backend development for India's largest job portal, focusing on scalable microservices architecture. Worked on critical modules including recruiter search, profile management, and payment systems handling millions of daily requests.",
+    "achievements": [
+      "Architected and developed Resdex module for recruiter search and profile bookmarking",
+      "Built config-based multi-gateway payment service handling high transaction volumes",
+      "Optimized database queries and caching strategies, improving response times by 40%",
+      "Mentored junior developers and established coding standards for the team"
+    ]
+  },
+  {
+    "company": "Startups",
+    "role": "Backend Developer",
+    "period": "2018 - 2020",
+    "description": "Developed backend systems for subscription management and licensing servers. Built RESTful APIs, implemented payment gateways, and designed database schemas for scalable applications.",
+    "achievements": [
+      "Developed subscription service with recruiter plans and access control",
+      "Built time-based licensing server with tamper protection mechanisms",
+      "Implemented microservices architecture from scratch",
+      "Reduced API response times through caching and query optimization"
+    ]
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Resdex Module",
+    "description": "Recruiter search and profile bookmarking system for Naukri.com. Handles complex search queries with advanced filtering, pagination, and real-time updates.",
+    "architecture": "Microservices architecture with Spring Boot, MySQL for primary data, Redis for caching search results, and Elasticsearch for advanced search capabilities. Implemented clean architecture with separation of concerns.",
+    "technologies": ["Java", "Spring Boot", "MySQL", "Redis", "Microservices"],
+    "icon": "Code"
+  },
+  {
+    "title": "Payment Service",
+    "description": "Config-based multi-gateway payment system supporting multiple payment providers. Handles high transaction volumes with fault tolerance and retry mechanisms.",
+    "architecture": "Spring Boot microservice with gateway abstraction layer. Supports Razorpay, Stripe, and custom gateways. Uses Redis for transaction state management and MySQL for transaction history. Implements circuit breaker pattern for resilience.",
+    "technologies": ["Java", "Spring Boot", "MySQL", "Redis", "Spring Cloud"],
+    "icon": "Zap"
+  },
+  {
+    "title": "Subscription Service",
+    "description": "Recruiter subscription plans and access control system. Manages plan upgrades, downgrades, feature access, and billing cycles with automated renewals.",
+    "architecture": "Event-driven microservice using Spring Boot and Spring Cloud. MongoDB for flexible subscription data, Redis for caching active subscriptions, and Kafka for event streaming. Implements saga pattern for distributed transactions.",
+    "technologies": ["Java", "Spring Boot", "MongoDB", "Redis", "Kafka"],
+    "icon": "Database"
+  },
+  {
+    "title": "Licensing Server",
+    "description": "Time-based license expiry and tamper protection system. Generates secure licenses, validates expiry, and prevents unauthorized modifications.",
+    "architecture": "Spring Boot service with cryptographic license generation using JWT tokens. MySQL for license storage, Redis for active license caching. Implements HMAC-based tamper detection and secure key management.",
+    "technologies": ["Java", "Spring Boot", "MySQL", "Redis", "JWT"],
+    "icon": "Shield"
+  }
+]

@@ -1,0 +1,17 @@
+{
+  "strongSkills": [
+    "Java",
+    "Spring Boot",
+    "Microservices",
+    "MySQL",
+    "MongoDB",
+    "Redis",
+    "Spring Cloud",
+    "Spring Batch"
+  ],
+  "basicSkills": [
+    "Kafka",
+    "Docker",
+    "Kubernetes"
+  ]
+}
