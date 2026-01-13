@@ -22,8 +22,19 @@ export default function Experience() {
     // Fetch experience data
     fetch("/api/data/experience")
       .then((res) => res.json())
-      .then((data: ExperienceData[]) => setExperiences(data))
-      .catch((err) => console.error("Error loading experience:", err));
+      .then((data: any) => {
+        // Check if data is an array and not an error object
+        if (Array.isArray(data)) {
+          setExperiences(data);
+        } else if (data && typeof data === 'object' && data.error) {
+          console.error("API error:", data.error);
+          // Keep empty array, will show "No experience available"
+        }
+      })
+      .catch((err) => {
+        console.error("Error loading experience:", err);
+        // Keep empty array
+      });
   }, []);
 
   return (
@@ -68,14 +79,18 @@ export default function Experience() {
                   <Separator />
                   <div>
                     <h4 className="mb-3 font-semibold text-foreground">Key Achievements:</h4>
-                    <ul className="space-y-2">
-                      {exp.achievements.map((achievement, idx) => (
-                        <li key={idx} className="flex items-start gap-2 text-muted-foreground">
-                          <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary" />
-                          <span>{achievement}</span>
-                        </li>
-                      ))}
-                    </ul>
+                    {Array.isArray(exp.achievements) && exp.achievements.length > 0 ? (
+                      <ul className="space-y-2">
+                        {exp.achievements.map((achievement, idx) => (
+                          <li key={idx} className="flex items-start gap-2 text-muted-foreground">
+                            <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary" />
+                            <span>{achievement}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p className="text-sm text-muted-foreground">No achievements listed</p>
+                    )}
                   </div>
                 </CardContent>
               </Card>

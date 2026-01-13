@@ -19,8 +19,19 @@ export default function About() {
     // Fetch profile data
     fetch("/api/data/profile")
       .then((res) => res.json())
-      .then((data: ProfileData) => setAbout(data.about || []))
-      .catch((err) => console.error("Error loading about:", err));
+      .then((data: any) => {
+        // Check if data is valid and not an error object
+        if (data && !data.error && Array.isArray(data.about)) {
+          setAbout(data.about);
+        } else if (data.error) {
+          console.error("API error:", data.error);
+          // Keep default values
+        }
+      })
+      .catch((err) => {
+        console.error("Error loading about:", err);
+        // Keep default values
+      });
   }, []);
 
   return (

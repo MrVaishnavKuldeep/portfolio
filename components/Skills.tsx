@@ -21,8 +21,22 @@ export default function Skills() {
     // Fetch skills data
     fetch("/api/data/skills")
       .then((res) => res.json())
-      .then((data: SkillsData) => setSkills(data))
-      .catch((err) => console.error("Error loading skills:", err));
+      .then((data: any) => {
+        // Check if data is valid and not an error object
+        if (data && !data.error && (data.strongSkills || data.basicSkills)) {
+          setSkills({
+            strongSkills: Array.isArray(data.strongSkills) ? data.strongSkills : [],
+            basicSkills: Array.isArray(data.basicSkills) ? data.basicSkills : [],
+          });
+        } else if (data.error) {
+          console.error("API error:", data.error);
+          // Keep default values
+        }
+      })
+      .catch((err) => {
+        console.error("Error loading skills:", err);
+        // Keep default values
+      });
   }, []);
 
   return (
@@ -43,11 +57,15 @@ export default function Skills() {
             </CardHeader>
             <CardContent>
               <div className="flex flex-wrap gap-2">
-                {skills.strongSkills.map((skill) => (
-                  <Badge key={skill} variant="default" className="text-sm px-3 py-1">
-                    {skill}
-                  </Badge>
-                ))}
+                {Array.isArray(skills.strongSkills) && skills.strongSkills.length > 0 ? (
+                  skills.strongSkills.map((skill) => (
+                    <Badge key={skill} variant="default" className="text-sm px-3 py-1">
+                      {skill}
+                    </Badge>
+                  ))
+                ) : (
+                  <span className="text-sm text-muted-foreground">No skills listed</span>
+                )}
               </div>
             </CardContent>
           </Card>
@@ -58,11 +76,15 @@ export default function Skills() {
             </CardHeader>
             <CardContent>
               <div className="flex flex-wrap gap-2">
-                {skills.basicSkills.map((skill) => (
-                  <Badge key={skill} variant="outline" className="text-sm px-3 py-1">
-                    {skill}
-                  </Badge>
-                ))}
+                {Array.isArray(skills.basicSkills) && skills.basicSkills.length > 0 ? (
+                  skills.basicSkills.map((skill) => (
+                    <Badge key={skill} variant="outline" className="text-sm px-3 py-1">
+                      {skill}
+                    </Badge>
+                  ))
+                ) : (
+                  <span className="text-sm text-muted-foreground">No skills listed</span>
+                )}
               </div>
             </CardContent>
           </Card>

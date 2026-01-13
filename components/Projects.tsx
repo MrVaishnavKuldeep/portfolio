@@ -29,8 +29,19 @@ export default function Projects() {
     // Fetch projects data
     fetch("/api/data/projects")
       .then((res) => res.json())
-      .then((data: ProjectData[]) => setProjects(data))
-      .catch((err) => console.error("Error loading projects:", err));
+      .then((data: any) => {
+        // Check if data is an array and not an error object
+        if (Array.isArray(data)) {
+          setProjects(data);
+        } else if (data && typeof data === 'object' && data.error) {
+          console.error("API error:", data.error);
+          // Keep empty array, will show "No projects available"
+        }
+      })
+      .catch((err) => {
+        console.error("Error loading projects:", err);
+        // Keep empty array
+      });
   }, []);
 
   return (
@@ -77,11 +88,15 @@ export default function Projects() {
                     <div>
                       <h4 className="mb-2 text-sm font-semibold text-foreground">Technologies:</h4>
                       <div className="flex flex-wrap gap-2">
-                        {project.technologies.map((tech) => (
-                          <Badge key={tech} variant="secondary" className="text-xs">
-                            {tech}
-                          </Badge>
-                        ))}
+                        {Array.isArray(project.technologies) && project.technologies.length > 0 ? (
+                          project.technologies.map((tech) => (
+                            <Badge key={tech} variant="secondary" className="text-xs">
+                              {tech}
+                            </Badge>
+                          ))
+                        ) : (
+                          <span className="text-xs text-muted-foreground">No technologies listed</span>
+                        )}
                       </div>
                     </div>
                   </CardContent>
