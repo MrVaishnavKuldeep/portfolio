@@ -3,15 +3,22 @@
     "Java",
     "Spring Boot",
     "Microservices",
-    "MySQL",
+    "SQL",
     "MongoDB",
-    "Redis",
-    "Spring Cloud",
-    "Spring Batch"
+    "Kafka"
   ],
   "basicSkills": [
-    "Kafka",
-    "Docker",
-    "Kubernetes"
+    "Redis",
+    "Elasticsearch",
+    "Spring Security",
+    "OAuth2",
+    "JWT",
+    "Swagger",
+    "Junit",
+    "Nginx",
+    "Aerospike",
+    "ELK Stack",
+    "Flutter",
+    "Dart"
   ]
 }

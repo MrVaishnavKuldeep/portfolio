@@ -1,14 +1,14 @@
 {
   "name": "Kuldeep Vaishnav",
-  "title": "Senior Java Backend Developer",
-  "description": "Building scalable microservices and robust backend systems with 6+ years of experience in enterprise-grade applications",
+  "title": "Backend / Java / Spring Boot / Senior Software Engineer / Tech Lead",
+  "description": "Backend-focused Java developer with 7 years of experience in building scalable microservices, payment systems, recruiter platforms, and enterprise applications.",
   "about": [
-    "I'm a Senior Java Backend Developer with over 6 years of experience architecting and building scalable microservices for high-traffic applications. My expertise lies in designing robust backend systems that handle millions of requests while maintaining performance and reliability.",
-    "Throughout my career, I've worked on critical systems at Infoedge (Naukri.com) and various startups, focusing on domains like job portals, subscription management, payment processing, and licensing servers. I'm passionate about clean architecture, performance optimization, and building systems that scale.",
-    "My approach combines deep technical knowledge with a focus on solving real-world business problems. I specialize in microservices architecture, ensuring systems are not only functional but also maintainable, testable, and ready for future growth."
+    "Backend-focused Java developer with 7 years of experience in building scalable microservices, payment systems, recruiter platforms, and enterprise applications.",
+    "Strong expertise in Java, Spring Boot, Microservices, SQL, MongoDB, Kafka, and system design with experience leading teams and migrating legacy systems to modern architectures.",
+    "Experienced in designing high-availability systems, handling large-scale production issues, and improving performance across complex backend platforms."
   ],
   "contact": {
-    "email": "your.email@example.com",
-    "linkedin": "https://linkedin.com/in/yourprofile"
+    "email": "Kuldeepvaishnav53@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/mrvaishnav53"
   }
 }

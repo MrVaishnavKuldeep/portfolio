@@ -1,30 +1,37 @@
 [
   {
-    "title": "Resdex Module",
-    "description": "Recruiter search and profile bookmarking system for Naukri.com. Handles complex search queries with advanced filtering, pagination, and real-time updates.",
-    "architecture": "Microservices architecture with Spring Boot, MySQL for primary data, Redis for caching search results, and Elasticsearch for advanced search capabilities. Implemented clean architecture with separation of concerns.",
-    "technologies": ["Java", "Spring Boot", "MySQL", "Redis", "Microservices"],
-    "icon": "Code"
-  },
-  {
-    "title": "Payment Service",
-    "description": "Config-based multi-gateway payment system supporting multiple payment providers. Handles high transaction volumes with fault tolerance and retry mechanisms.",
-    "architecture": "Spring Boot microservice with gateway abstraction layer. Supports Razorpay, Stripe, and custom gateways. Uses Redis for transaction state management and MySQL for transaction history. Implements circuit breaker pattern for resilience.",
-    "technologies": ["Java", "Spring Boot", "MySQL", "Redis", "Spring Cloud"],
+    "title": "Payment Service (Multi-Gateway)",
+    "description": "Configuration-based multi-gateway payment system, PCI-DSS compliant, reduced payment failures by 25%.",
+    "architecture": "Multi-gateway payment service for InfoEdge, Dec 2023 - Present, handling payments across multiple providers.",
+    "technologies": ["Java", "Spring Boot", "Kafka", "MongoDB"],
     "icon": "Zap"
   },
   {
-    "title": "Subscription Service",
-    "description": "Recruiter subscription plans and access control system. Manages plan upgrades, downgrades, feature access, and billing cycles with automated renewals.",
-    "architecture": "Event-driven microservice using Spring Boot and Spring Cloud. MongoDB for flexible subscription data, Redis for caching active subscriptions, and Kafka for event streaming. Implements saga pattern for distributed transactions.",
-    "technologies": ["Java", "Spring Boot", "MongoDB", "Redis", "Kafka"],
+    "title": "Resdex (CV Search)",
+    "description": "Recruiter CV search platform built from scratch, improved recruiter engagement by 20%.",
+    "architecture": "Search platform for recruiter CVs at InfoEdge, Dec 2023 - Present, powered by Elasticsearch.",
+    "technologies": ["Java", "Spring Boot", "Elasticsearch"],
+    "icon": "Code"
+  },
+  {
+    "title": "BONUS / VMS",
+    "description": "Voucher and coupon management system, improved customer retention by 15%.",
+    "architecture": "BONUS / VMS platform at Skilrock, Feb 2022 - Present, with monitoring via ELK.",
+    "technologies": ["Java", "Spring Boot", "MongoDB", "ELK"],
     "icon": "Database"
   },
   {
-    "title": "Licensing Server",
-    "description": "Time-based license expiry and tamper protection system. Generates secure licenses, validates expiry, and prevents unauthorized modifications.",
-    "architecture": "Spring Boot service with cryptographic license generation using JWT tokens. MySQL for license storage, Redis for active license caching. Implements HMAC-based tamper detection and secure key management.",
-    "technologies": ["Java", "Spring Boot", "MySQL", "Redis", "JWT"],
+    "title": "Retail Management System",
+    "description": "Retail management system with RBAC implementation, improved transaction speed by 20%.",
+    "architecture": "Retail Management System at Skilrock, Jun 2019 - Aug 2020.",
+    "technologies": ["Java", "Spring Boot", "MongoDB"],
+    "icon": "Database"
+  },
+  {
+    "title": "Player Account Management",
+    "description": "Secure player lifecycle management system, improved player retention by 15%.",
+    "architecture": "Player account management platform at Skilrock, Jun 2019 - Aug 2020.",
+    "technologies": ["Java", "Spring Boot", "MongoDB"],
     "icon": "Shield"
   }
 ]
