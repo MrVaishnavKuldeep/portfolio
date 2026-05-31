@@ -123,3 +123,44 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* ============================================================================
+   Hero "Intro Around Avatar" — animations
+   Paste this block at the END of app/globals.css
+   ============================================================================ */
+
+/* Waving character: 8-frame transparent sprite slides one cell at a time */
+.kv-wave-strip {
+  animation: kv-waveSlide 1.15s steps(8) infinite;
+}
+@keyframes kv-waveSlide {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-100%); }
+}
+
+/* Floating labels: entrance (delayed, staggered) */
+.kv-float {
+  opacity: 0;
+  animation: kv-floatIn 0.7s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+}
+@keyframes kv-floatIn {
+  from { opacity: 0; transform: translateY(18px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Floating labels: gentle continuous bob (duration set per-label via --dur) */
+.kv-bob {
+  animation: kv-bob var(--dur, 5s) ease-in-out infinite;
+}
+@keyframes kv-bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-9px); }
+}
+
+/* Respect reduced-motion: everything visible, nothing moves */
+@media (prefers-reduced-motion: reduce) {
+  .kv-wave-strip { animation: none; }
+  .kv-float { opacity: 1 !important; animation: none !important; }
+  .kv-bob { animation: none !important; }
+}
+

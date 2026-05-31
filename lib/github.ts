@@ -39,6 +39,10 @@ export async function getGitHubFile(path: string): Promise<string | null> {
       if (response.status === 404) {
         return null;
       }
+      if (response.status === 401) {
+        console.warn(`[GitHub Sync] API unauthorized (401) for: ${path}. (Using local JSON data fallback)`);
+        return null;
+      }
       throw new Error(`GitHub API error: ${response.status} ${response.statusText}`);
     }
 
@@ -50,9 +54,10 @@ export async function getGitHubFile(path: string): Promise<string | null> {
     }
     
     return null;
-  } catch (error) {
-    console.error("Error fetching file from GitHub:", error);
-    throw error;
+  } catch (error: any) {
+    // Log a clean one-line warning instead of throwing a full console stack trace
+    console.warn(`[GitHub Sync] Could not fetch '${path}' from GitHub (Reason: ${error?.message || error}). Using local local data.`);
+    return null;
   }
 }
 

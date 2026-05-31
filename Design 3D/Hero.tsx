@@ -2,8 +2,20 @@
 
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ChevronDown } from "lucide-react";
-import ChromaKeyVideo from "./ChromaKeyVideo";
+
+/**
+ * Hero — "Intro Around Avatar"
+ *
+ * A transparent, waving 3D character sits in the centre while a greeting,
+ * role card, experience stat and skill chips float / bob around it.
+ *
+ * The wave is a transparent CSS sprite (8 green-keyed frames in one PNG),
+ * so it plays in every browser on any background — no video codec needed.
+ *
+ * SETUP
+ *  1. Copy wave-strip.png to:  public/assets/wave-strip.png
+ *  2. Paste the keyframes block (see hero-animations.css) into app/globals.css
+ */
 
 interface ProfileData {
   name: string;
@@ -55,12 +67,14 @@ function Chip({ children }: { children: React.ReactNode }) {
 }
 
 function Avatar() {
+  // overflow-hidden box clipped to ONE sprite cell; the wide strip slides via CSS steps()
   return (
-    <div className="relative h-[340px] w-[158px] sm:h-[400px] sm:w-[186px] lg:h-[440px] lg:w-[205px] flex items-end justify-center">
-      <ChromaKeyVideo
-        src="/assets/kuldeep_wave_hand.mp4"
-        className="w-full h-auto block"
-        shadowColor="0 15px 35px rgba(0,0,0,0.3)"
+    <div className="relative h-[340px] w-[158px] overflow-hidden sm:h-[400px] sm:w-[186px] lg:h-[440px] lg:w-[205px]">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/assets/wave-strip.png"
+        alt="Kuldeep Vaishnav waving"
+        className="kv-wave-strip block h-full w-auto max-w-none origin-top-left"
       />
     </div>
   );
@@ -98,23 +112,6 @@ export default function Hero() {
   const goTo = (id: string) =>
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
-  // Format the title dynamically for the desktop floating role card if it's very long
-  const formatDesktopTitle = (title: string) => {
-    if (title.includes(" / ")) {
-      const parts = title.split(" / ").map((p) => p.trim());
-      const mainRoles = parts.filter(
-        (p) =>
-          p.toLowerCase().includes("engineer") ||
-          p.toLowerCase().includes("lead") ||
-          p.toLowerCase().includes("developer")
-      );
-      if (mainRoles.length > 0) {
-        return mainRoles.join(" & ");
-      }
-    }
-    return title;
-  };
-
   return (
     <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 py-24 md:px-8">
       {/* ---------- Desktop / tablet: orbit stage ---------- */}
@@ -133,11 +130,9 @@ export default function Hero() {
         </Float>
 
         <Float pos={POS.role}>
-          <div className="flex flex-col gap-1.5 rounded-[14px] border border-border bg-background px-[18px] py-3.5 text-left shadow-[0_14px_34px_-18px_rgba(20,20,20,0.3)] max-w-xs">
+          <div className="flex flex-col gap-1.5 rounded-[14px] border border-border bg-background px-[18px] py-3.5 text-left shadow-[0_14px_34px_-18px_rgba(20,20,20,0.3)]">
             <span className="font-mono text-[11px] tracking-[0.2em] text-muted-foreground">ROLE</span>
-            <span className="text-[16px] font-bold leading-snug tracking-tight text-foreground">
-              {formatDesktopTitle(profile.title)}
-            </span>
+            <span className="text-[17px] font-bold leading-tight tracking-tight">{profile.title}</span>
           </div>
         </Float>
 
@@ -171,9 +166,7 @@ export default function Hero() {
         <Avatar />
         <FloorShadow />
         <h1 className="mt-6 text-3xl font-bold tracking-tight text-foreground">{profile.name}</h1>
-        <p className="mt-2 text-lg font-semibold text-muted-foreground px-4 leading-snug">
-          {profile.title}
-        </p>
+        <p className="mt-2 text-lg font-semibold text-muted-foreground">{profile.title}</p>
         <div className="mt-5 flex max-w-xs flex-wrap justify-center gap-2">
           {SKILLS.map((s) => (
             <Chip key={s}>{s}</Chip>
@@ -182,18 +175,13 @@ export default function Hero() {
       </div>
 
       {/* ---------- CTAs ---------- */}
-      <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row z-20">
+      <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row">
         <Button size="lg" className="w-full sm:w-auto" onClick={() => goTo("contact")}>
           Get In Touch
         </Button>
         <Button size="lg" variant="outline" className="w-full sm:w-auto" onClick={() => goTo("projects")}>
           View Projects
         </Button>
-      </div>
-
-      {/* ---------- Scroll Indicator ---------- */}
-      <div className="absolute bottom-8 animate-bounce cursor-pointer z-10" onClick={() => goTo("about")}>
-        <ChevronDown className="h-6 w-6 text-muted-foreground transition-colors hover:text-foreground" />
       </div>
     </section>
   );
